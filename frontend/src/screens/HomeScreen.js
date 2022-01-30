@@ -3,6 +3,8 @@ import ControlledCarousel from "../components/ControlledCarousel";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "../components/Product";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 import Category from "../components/Category";
 import { listCategory } from "../actions/categoryActions";
 
@@ -17,9 +19,9 @@ function HomeScreen() {
   return (
     <div>
       {loading ? (
-        <h2>Loading ..</h2>
+        <Loader/>
       ) : error ? (
-        <h2>{error}</h2>
+        <Message variant = 'danger'>{error}</Message>
       ) : (
         <div>
           <h3 className="text-center">Product Categories</h3>
