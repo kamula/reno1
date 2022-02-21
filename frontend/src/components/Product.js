@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 
 function Product({product}) {
   return <Card className='my-3 p-3 rounded'>
-      <a href={`/product/${product.id}`}>
+      <Link to={`/product/${product.id}`}>
           <Card.Img src={product.image}/>
-      </a>
+      </Link>
       <Card.Body>
-        <a href={`/product/${product.id}`}>
+        <Link to={`/product/${product.id}`}>
             <Card.Title as="div">
                 <strong>{product.name}</strong>
             </Card.Title>
-        </a>
+        </Link>
         {/* <Card.Text as="div">
             <div className='my-3'>
                 {product.rating} from {product.numReviews}
