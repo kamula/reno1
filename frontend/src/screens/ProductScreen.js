@@ -1,7 +1,7 @@
 /*Single product*/
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams,useNavigate } from "react-router-dom";
+import { Link, useParams,useNavigate  } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button, Card,Form } from "react-bootstrap";
 import { listproductDetails } from "../actions/productsActions";
 import Message from "../components/Message";
@@ -9,6 +9,7 @@ import Loader from "../components/Loader";
 
 function ProductScreen({ match}) {
   const navigate = useNavigate();
+  
   const[qty,setQty] =useState(1)
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -19,10 +20,9 @@ function ProductScreen({ match}) {
     dispatch(listproductDetails(id));
   }, [dispatch,id]);
   
-  const addToCartHandler = () =>{
-    navigate(`/cart/${id}?qty=${qty}`)
-    console.log('Add to cart:',id)
-    // console.log(history)
+  const addToCartHandler = () =>{   
+    
+    navigate(`/cart/${id}?qty=${qty}`)    
   }
 
   return (
