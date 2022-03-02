@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
-import { Link, useParams, useSearchParams,useNavigate } from "react-router-dom";
+import {
+  Link,
+  useParams,
+  useSearchParams,
+  useNavigate,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FaTrash } from 'react-icons/fa';
+import { FaTrash } from "react-icons/fa";
 import {
   Row,
   Col,
@@ -12,7 +17,7 @@ import {
   Card,
 } from "react-bootstrap";
 import Message from "../components/Message";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 
 function CartScreen({ match, location, history }) {
   const navigate = useNavigate();
@@ -24,20 +29,19 @@ function CartScreen({ match, location, history }) {
   // const qty = location.search
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;  
+  const { cartItems } = cart;
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
   }, [dispatch, productId, qty]);
 
-  const removeFromCartHandler = (id) =>{
-    console.log('remove:',id)
-  }
-  const checkOutHandler = (history) =>{
-    
-    navigate('/login?redirect=shipping')
-  }
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
+  const checkOutHandler = (history) => {
+    navigate("/login?redirect=shipping");
+  };
 
   return (
     <Row>
@@ -67,7 +71,9 @@ function CartScreen({ match, location, history }) {
                       as="select"
                       value={item.qty}
                       onChange={(e) =>
-                        dispatch(addToCart(item.product, Number(e.target.value)))
+                        dispatch(
+                          addToCart(item.product, Number(e.target.value))
+                        )
                       }
                     >
                       {[...Array(item.countInStock).keys()].map((x) => (
@@ -81,9 +87,9 @@ function CartScreen({ match, location, history }) {
                     <Button
                       type="button"
                       variant="light"
-                      onClick={()=>removeFromCartHandler(item.product)}
+                      onClick={() => removeFromCartHandler(item.product)}
                     >
-                      <FaTrash/>
+                      <FaTrash />
                     </Button>
                   </Col>
                 </Row>
@@ -96,15 +102,22 @@ function CartScreen({ match, location, history }) {
         <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Subtotal ({cartItems.reduce((acc,item)=> acc+Number(item.qty),0)}) items</h2>
-              Ksh {cartItems.reduce((acc,item)=> acc+Number(item.qty) *item.price,0).toFixed(2)}
+              <h2>
+                Subtotal (
+                {cartItems.reduce((acc, item) => acc + Number(item.qty), 0)})
+                items
+              </h2>
+              Ksh{" "}
+              {cartItems
+                .reduce((acc, item) => acc + Number(item.qty) * item.price, 0)
+                .toFixed(2)}
             </ListGroup.Item>
           </ListGroup>
           <ListGroup.Item>
             <Button
               type="button"
               className="btn-block"
-              style={{width:'100%'}}
+              style={{ width: "100%" }}
               disabled={cartItems.length === 0}
               onClick={checkOutHandler}
             >
