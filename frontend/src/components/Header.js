@@ -13,7 +13,16 @@ function Header() {
       <TopNav />
       <Navbar bg="info" variant="dark" expand="lg" collapseOnSelect  >
         <Container>
-          <Navbar.Brand href="/">Renotech</Navbar.Brand>
+          <Navbar.Brand href="/">
+          <img
+          alt=""
+          src="/logo.jpeg"
+          width="60"
+          height="40"
+          className="d-inline-block align-top"
+          />{' '}
+            Renotech
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

@@ -8,7 +8,7 @@ function TopNav() {
     <Nav className="justify-content-center" activeKey="/home">
       <Nav.Item>
         <Nav.Link href="/home">
-            <FaPhoneAlt color="green" size={20}/> 0795510186
+            <FaPhoneAlt color="green" size={20}/> 0797847747
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
