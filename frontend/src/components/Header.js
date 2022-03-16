@@ -16,7 +16,7 @@ function Header() {
           <Navbar.Brand href="/">
           <img
           alt=""
-          src="/logo.jpeg"
+          src="/images/logo.jpeg"
           width="60"
           height="40"
           className="d-inline-block align-top"
@@ -26,7 +26,8 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/cart/"> <FaShoppingCart /> Cart</Nav.Link>
+              <Nav.Link href="/cart">
+                 <FaShoppingCart /> Cart</Nav.Link>
               <Nav.Link href="/login"><FaUser /> Login</Nav.Link>              
             </Nav>
           </Navbar.Collapse>
