@@ -19,7 +19,7 @@ function LoginScreen({location,history}) {
     const navigate = useNavigate();
     useEffect(()=>{
         if(userInfo){
-            navigate(redirect)
+            // navigate(redirect)
         }
     },[userInfo,redirect])
     const submitHandler = (e) =>{
