@@ -19,14 +19,14 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
-
 from accounts import views
 
 urlpatterns = [
     path('api/users/login/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('admin/', admin.site.urls),
     path('',TemplateView.as_view(template_name='index.html')),
-    path('api/v1/products/',include('products.urls'))
+    path('api/v1/products/',include('products.urls')),
+    path('api/v1/users/',include('accounts.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
