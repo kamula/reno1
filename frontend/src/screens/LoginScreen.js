@@ -19,7 +19,9 @@ function LoginScreen({location,history}) {
     const navigate = useNavigate();
     useEffect(()=>{
         if(userInfo){
-            // navigate(redirect)
+            // navigate(redirect)            
+            navigate('/')
+            
         }
     },[userInfo,redirect])
     const submitHandler = (e) =>{
@@ -29,6 +31,8 @@ function LoginScreen({location,history}) {
   return (
     <FormContainer>
         <h1>Sign In</h1>
+        {error && <Message variant='danger'>{error}</Message>}
+        {loading && <Loader/>}
         <Form onSubmit={submitHandler}>
             <Form.Group controlId='email'>
                 <Form.Label>Email Address</Form.Label>
