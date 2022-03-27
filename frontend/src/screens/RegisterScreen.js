@@ -115,18 +115,23 @@ function RegisterScreen() {
                 >
                 </Form.Control>
             </Form.Group>
-            <Button type='submit' variant='primary'>Register</Button>
+            <div className='text-center mt-2'>
+                <Button type='submit' variant='primary'>Register</Button>
+            </div>
         </Form>
-        <Row className='py-3'>
-            <Col>
-                Have an account? <Link
-                    to={redirect ?`/login?redirect= ${redirect}`:'/login'}
-                    // to='/register'
-                >
-                Sign In
-                </Link>
-            </Col>
-        </Row>
+        <div className='text-center'>
+            <Row className='py-3'>
+                <Col>
+                    Have an account? <Link
+                        to={redirect ?`/login?redirect= ${redirect}`:'/login'}
+                        // to='/register'
+                    >
+                    Sign In
+                    </Link>
+                </Col>
+            </Row>
+        </div>
+        
     </FormContainer>
   )
 }

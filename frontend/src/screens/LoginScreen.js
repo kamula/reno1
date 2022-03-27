@@ -30,7 +30,7 @@ function LoginScreen({location,history}) {
     }
   return (
     <FormContainer>
-        <h1>Sign In</h1>
+        <h1 className='text-center'>Sign In</h1>
         {error && <Message variant='danger'>{error}</Message>}
         {loading && <Loader/>}
         <Form onSubmit={submitHandler}>
@@ -55,18 +55,22 @@ function LoginScreen({location,history}) {
                 >
                 </Form.Control>
             </Form.Group>
-            <Button type='submit' variant='primary'>Sign In</Button>
+            <div className='text-center mt-2'>
+                <Button type='submit' variant='primary'>Sign In</Button>
+            </div>
         </Form>
-        <Row className='py-3'>
-            <Col>
-                New Customer? <Link
-                    to={redirect ?`/register?redirect= ${redirect}`:'/register'}
-                    // to='/register'
-                >
-                Register
-                </Link>
-            </Col>
-        </Row>
+        <div className='text-center'>
+            <Row className='py-3'>
+                <Col>
+                    New Customer? <Link
+                        to={redirect ?`/register?redirect= ${redirect}`:'/register'}
+                        // to='/register'
+                    >
+                    Register
+                    </Link>
+                </Col>
+            </Row>
+        </div>
     </FormContainer>
   )
 }
