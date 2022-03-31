@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Category from "../components/Category";
 import { listCategory } from "../actions/categoryActions";
+import CategoryCarousel from '../components/CategoryCarousel'
 
 function HomeScreen() {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ function HomeScreen() {
         <Message variant = 'danger'>{error}</Message>
       ) : (
         <div>
-          <h3 className="text-center">Product Categories</h3>
+          <CategoryCarousel/>
+          <h3 className="text-center ">Product Categories</h3>
           <Row>
             {categories.map((category) => (
               <Col key={category.id} sm={12} md={6} lg={4} xl={3}>
