@@ -33,6 +33,12 @@ def get_products(request,id):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def getTopCategories(request):
+    categories = ProductCategory.objects.all()[0:4]
+    serializer = ProductCategorySerializer(categories,many=True)   
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def get_product(request,pk):
     product = Product.objects.get(id = pk)
     serializer = ProductSerializer(product)
